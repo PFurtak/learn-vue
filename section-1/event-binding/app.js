@@ -6,6 +6,16 @@ const app = Vue.createApp({
       confirmedName: '',
     };
   },
+  computed: {
+    fullname() {
+      console.log('Running fullname...');
+      if (this.name === '') {
+        return '';
+      } else {
+        return this.name + ' ' + 'Furtak';
+      }
+    },
+  },
   methods: {
     submitForm() {
       alert('Submitted');
@@ -16,11 +26,14 @@ const app = Vue.createApp({
     decrement(num) {
       this.counter -= num;
     },
-    setName(e, lastName) {
-      this.name = e.target.value + ' ' + lastName;
+    setName(e) {
+      this.name = e.target.value;
     },
     confirmInput() {
       this.confirmedName = this.name;
+    },
+    resetInput() {
+      this.name = '';
     },
   },
 });
